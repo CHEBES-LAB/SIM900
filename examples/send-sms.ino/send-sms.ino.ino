@@ -11,25 +11,12 @@ SIM900 sim900(7, 8); //Rx, Tx
 String phoneNumber = "+ZZxxxxxxxxxx";
 String message = "Hello from SIM900";
 
-void handleSMS(String number, String message) {
-  Serial.println("number: " + number + "\nMessage: " + message);
-}
-
-void handleCall(String number) {
-  Serial.println("New call from " + number);
-}
-
 void setup() {
   Serial.begin(9600);
   
   sim900.begin(9600);
   
-  sim900.setSMSCallback(handleSMS);
-  sim900.setCallCallback(handleCall);
-  
   sim900.sendSMS(phoneNumber, message);
 }
 
-void loop() {
-  sim900.listen();
-}
+void loop() {}
